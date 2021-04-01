@@ -18,4 +18,19 @@ class PortfoliosController < ApplicationController
       end
     end
   end
+
+  def edit
+    @portfolio_item = Portfolio.find(params[:id])
+  end
+
+  def update
+    respond_to do |format|
+      if @portfolio_item.update(blog_params)
+        format.html { redirect_to @blog, notice: "Blog was successfully updated." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
 end
+r3
